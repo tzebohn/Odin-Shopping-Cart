@@ -1,5 +1,12 @@
+import { useLoaderData } from "react-router-dom"
+
 export function Products () {
+
+    const products = useLoaderData();
+    console.log(products)
     return (
-        <h1>Products Page</h1>
+        <main>
+            <h1>Products Page</h1>
+        </main>
     )
 }
