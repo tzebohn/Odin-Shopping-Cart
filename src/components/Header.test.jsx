@@ -3,7 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 import { CartProvider } from "../contexts/CartProvider";
 import { Header } from "./Header";
-import CartContext from "../contexts/CartContext";
 
 describe("Header", () => {
     it("renders all main elements", () => {
@@ -23,7 +22,7 @@ describe("Header", () => {
     })
 
     it("displays correct badge count when cart has items", () => {
-        
+
         const mockCart = [
             {
                 "id": 1,
@@ -55,9 +54,9 @@ describe("Header", () => {
 
         render (
             <BrowserRouter>
-                <CartContext.Provider value={{ cart: mockCart }}>
+                <CartProvider initialCart={mockCart}>
                     <Header />
-                </CartContext.Provider>
+                </CartProvider>
             </BrowserRouter>           
         )
 
