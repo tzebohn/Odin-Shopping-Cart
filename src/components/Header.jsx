@@ -10,10 +10,8 @@ export function Header () {
     const showSearch = location.pathname !== "/" && location.pathname !== "/cart" // Only show search bar in products tab
 
     // CUSTOM HOOKS
-    const { cart } = useCart() 
+    const { cart, totalQuantity } = useCart() 
 
-    // Calculate total items in cart
-    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0)
 
     return (
         <div className="bg-[#1f0d33] text-[#e8e8e8] flex items-center justify-between px-8 py-8">
