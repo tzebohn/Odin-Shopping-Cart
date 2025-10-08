@@ -12,9 +12,9 @@
 import { useState } from "react"
 import CartContext from "./CartContext"
 
-export function CartProvider({ children }) {
+export function CartProvider({ children, initialCart = [] }) {
     // USESTATES
-    const [cart, setCart] = useState([]) // List of items in cart
+    const [cart, setCart] = useState(initialCart) // List of items in cart
 
     /**
      * Adds a new product to the cart by updating the cart state.
