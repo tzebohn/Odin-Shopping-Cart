@@ -44,9 +44,20 @@ export function ProductCard ({ product }) {
                     <button onClick={handleAdd} className="bg-yellow-300 hover:bg-yellow-400 rounded-full cursor-pointer p-2 px-4 md:self-start md:w-auto">Add to cart</button>
                 ) : (
                     <div className="flex items-center justify-between gap-4 border-2 border-yellow-300 rounded-full p-2 px-4 md:self-start md:w-auto">
-                        <button>{inCart.quantity === 1 ? <SlTrash onClick={handleRemove} className={`${iconStyles} scale-[0.90]`}/> : <FaMinus onClick={handleDecrease} className={`${iconStyles} scale-[0.85]`}/>}</button>
+                        <button
+                            onClick={inCart.quantity === 1 ? handleRemove : handleDecrease}
+                            aria-label={inCart.quantity === 1 ? "remove item" : "decrease quantity"}
+                        >
+                            {inCart.quantity === 1 ? (
+                                <SlTrash className={`${iconStyles} scale-[0.90]`}/> 
+                            ) : (
+                                <FaMinus className={`${iconStyles} scale-[0.85]`}/>
+                            )}
+                        </button>
                         <p>{inCart.quantity}</p>
-                        <button onClick={handleIncrease}><IoMdAdd className={`${iconStyles}`}/></button>
+                        <button onClick={handleIncrease} aria-label="increase quantity">
+                            <IoMdAdd className={`${iconStyles}`}/>
+                        </button>
                     </div>
                 )}
             </div>
