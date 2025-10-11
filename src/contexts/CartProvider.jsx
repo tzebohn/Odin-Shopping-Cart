@@ -70,8 +70,11 @@ export function CartProvider({ children, initialCart = [] }) {
     // Calculate total items in cart
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0)
 
+    // Calculate total cost in cart
+    const totalCost = cart.reduce((sum, item) => sum + (item.quantity * item.price), 0)
+
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, totalQuantity }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, totalQuantity, totalCost }}>
             {children}
         </CartContext.Provider>
     )
