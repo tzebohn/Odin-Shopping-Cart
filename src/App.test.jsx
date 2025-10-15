@@ -2,14 +2,17 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { CartProvider } from './contexts/CartProvider'
 import App from './App';
+import { MenuProvider } from './contexts/MenuProvider';
 
 describe('App', () => {
   it('renders without crashing', () => {
     render(
       <BrowserRouter>
-        <CartProvider>
-          <App />
-        </CartProvider>
+        <MenuProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </MenuProvider>
       </BrowserRouter>
     );
 

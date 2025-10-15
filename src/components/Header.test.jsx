@@ -3,14 +3,17 @@ import { BrowserRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 import { CartProvider } from "../contexts/CartProvider";
 import { Header } from "./Header";
+import { MenuProvider } from "../contexts/MenuProvider";
 
 describe("Header", () => {
     it("renders all main elements", () => {
         render(
             <BrowserRouter>
-                <CartProvider>
-                    <Header />
-                </CartProvider>
+                <MenuProvider>
+                    <CartProvider>
+                        <Header />
+                    </CartProvider>
+                </MenuProvider>
             </BrowserRouter>
         )
 
@@ -54,9 +57,11 @@ describe("Header", () => {
 
         render (
             <BrowserRouter>
-                <CartProvider initialCart={mockCart}>
-                    <Header />
-                </CartProvider>
+                <MenuProvider>
+                    <CartProvider initialCart={mockCart}>
+                        <Header />
+                    </CartProvider>
+                </MenuProvider>
             </BrowserRouter>           
         )
 
