@@ -2,6 +2,9 @@ import { FaShopify } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { useCart } from "../contexts/useCart";
 import { IoCartOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
+import { useMenu } from "../contexts/useMenu";
 
 export function Header () {
 
@@ -11,10 +14,18 @@ export function Header () {
 
     // CUSTOM HOOKS
     const { cart, totalQuantity } = useCart() 
+    const { menuOpen, toggleMenu } = useMenu()
 
+    /**
+     * Gets called when user clicks Hamburger Icon.
+     * Function updates menuOpen state. 
+     */
+    function handleMenu () {
+        toggleMenu()
+    }
 
     return (
-        <div className="bg-[#1f0d33] text-[#e8e8e8] flex items-center justify-between px-8 py-8 h-32">
+        <div className="relative bg-[#1f0d33] text-[#e8e8e8] flex items-center justify-between px-8 py-8 h-32">
             {/* Left: Logo */}
             <div className="flex items-center">
                 <FaShopify className="text-6xl"/>
@@ -29,7 +40,7 @@ export function Header () {
             }
 
             {/* Right: Navigation */}
-            <nav className="hidden sm:flex items-center sm:gap-6">
+            <nav className="hidden sm:flex items-center sm:gap-6 md:gap-8 lg:gap-12">
                 <NavLink to={"/"}>Home</NavLink>
                 <NavLink to={"/products"}>Products</NavLink>
                 <div className="flex items-center gap-4">
@@ -40,6 +51,15 @@ export function Header () {
                     <NavLink to={"/cart"}>Cart</NavLink>
                 </div>
             </nav>
+            {/* Show Hamburger navigation icon when screen is small */}
+            <button
+                onClick={handleMenu}
+                className="sm:hidden"
+            >
+                {menuOpen ? <IoMdClose className="text-[30px] cursor-pointer"/> : <RxHamburgerMenu className="text-[30px] cursor-pointer"/>}
+            </button>
+
+
         </div>
     )
 }
