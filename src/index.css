@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+
+/* ---- Slick carousel custom dots ---- */
+.slick-dots {
+  position: absolute;
+  bottom: 16px; /* move closer to bottom */
+  width: 100%;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px; /* dot size */
+  color: white !important; /* default dot color */
+  opacity: 1 !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #facc15 !important; /* yellow-400 */
+  opacity: 1;
+}
