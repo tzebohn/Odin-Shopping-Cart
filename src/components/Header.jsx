@@ -3,7 +3,6 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useCart } from "../contexts/useCart";
 import { IoCartOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { IoMdClose } from "react-icons/io";
 import { useMenu } from "../contexts/useMenu";
 
 export function Header () {
@@ -13,8 +12,8 @@ export function Header () {
     const showSearch = location.pathname !== "/" && location.pathname !== "/cart" // Only show search bar in products tab
 
     // CUSTOM HOOKS
-    const { cart, totalQuantity } = useCart() 
-    const { menuOpen, toggleMenu } = useMenu()
+    const { totalQuantity } = useCart() 
+    const { toggleMenu } = useMenu()
 
     /**
      * Gets called when user clicks Hamburger Icon.
@@ -56,7 +55,7 @@ export function Header () {
                 onClick={handleMenu}
                 className="sm:hidden"
             >
-                {menuOpen ? <IoMdClose className="text-[30px] cursor-pointer"/> : <RxHamburgerMenu className="text-[30px] cursor-pointer"/>}
+                <RxHamburgerMenu className="text-[30px] cursor-pointer"/>
             </button>
 
 
