@@ -4,6 +4,7 @@ import { useCart } from "../contexts/useCart";
 import { IoCartOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useMenu } from "../contexts/useMenu";
+import { SearchBar } from "./SearchBar";
 
 export function Header () {
 
@@ -33,9 +34,7 @@ export function Header () {
 
             {/* Middle: Conditional search bar */}
             {showSearch && 
-            <form className="hidden sm:block">
-                <input type="text" placeholder="Search ShopEasy"/>
-            </form>
+                <SearchBar className="hidden sm:block font-semibold"/>
             }
 
             {/* Right: Navigation */}
