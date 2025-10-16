@@ -11,8 +11,15 @@ export function MenuProvider ({ children }) {
         setMenuOpen(prev => !prev)
     }
 
+    /**
+     * Closes menu after user clicks a NavLink in menu
+     */
+    function closeMenu () {
+        setMenuOpen(false)
+    }
+
     return (
-        <MenuContext.Provider value={{ menuOpen, toggleMenu }}>
+        <MenuContext.Provider value={{ menuOpen, toggleMenu, closeMenu }}>
             {children}
         </MenuContext.Provider>
     )
