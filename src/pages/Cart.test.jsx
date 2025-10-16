@@ -4,6 +4,7 @@ import { CartProvider } from "../contexts/CartProvider"
 import { BrowserRouter } from "react-router-dom"
 import { MemoryRouter } from "react-router-dom"
 import { vi } from "vitest"
+import { MenuProvider } from "../contexts/MenuProvider"
 
 
 // Define mockNavigate *before* mocking the module
@@ -42,9 +43,11 @@ describe("Cart Page", () => {
     it("renders empty cart", () => {
         render(
             <BrowserRouter>
-                <CartProvider>
-                    <Cart />
-                </CartProvider>
+                <MenuProvider>
+                    <CartProvider>
+                        <Cart />
+                    </CartProvider>
+                </MenuProvider>
             </BrowserRouter>
         )
         
@@ -55,9 +58,11 @@ describe("Cart Page", () => {
     it("renders order summary", () => {
         render (
             <BrowserRouter>
-                <CartProvider initialCart={mockCart}>
-                    <Cart />
-                </CartProvider>
+                <MenuProvider>
+                    <CartProvider initialCart={mockCart}>
+                        <Cart />
+                    </CartProvider>
+                </MenuProvider>
             </BrowserRouter>           
         )
 
@@ -70,9 +75,11 @@ describe("Cart Page", () => {
     it("removes product when 'remove' is clicked", () => {
         render (
             <BrowserRouter>
-                <CartProvider initialCart={mockCart}>
-                    <Cart />
-                </CartProvider>
+                <MenuProvider>
+                    <CartProvider initialCart={mockCart}>
+                        <Cart />
+                    </CartProvider>
+                </MenuProvider>
             </BrowserRouter>           
         )
 
@@ -90,9 +97,11 @@ describe("Cart Page", () => {
     it("navigates to products page when 'Continue Shopping is clicked", () => {
         render (
             <MemoryRouter initialEntries={["/cart"]}>
-                <CartProvider initialCart={mockCart}>
-                    <Cart />
-                </CartProvider>
+                <MenuProvider>
+                    <CartProvider initialCart={mockCart}>
+                        <Cart />
+                    </CartProvider>
+                </MenuProvider>
             </MemoryRouter>
         )
 
@@ -106,9 +115,11 @@ describe("Cart Page", () => {
     it("navigates back to products page when 'SHOP NOW' is clicked", () => {
         render (
             <MemoryRouter initialEntries={["/cart"]}>
-                <CartProvider>
-                    <Cart />
-                </CartProvider>
+                <MenuProvider>
+                    <CartProvider>
+                        <Cart />
+                    </CartProvider>
+                </MenuProvider>
             </MemoryRouter>
         )
 

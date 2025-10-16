@@ -14,6 +14,7 @@ vi.mock("react-router-dom", async () => {
 })
 
 import { Cart } from "../pages/Cart";
+import { MenuProvider } from "../contexts/MenuProvider";
 
 // Create a mock cart for testing 
 const mockCart = [
@@ -36,9 +37,11 @@ describe("OrderSummary Form", () => {
     it("renders OrderSummaryForm", () => {
         render (
             <BrowserRouter>
-                <CartProvider initialCart={mockCart}>
-                    <Cart/>
-                </CartProvider>
+                <MenuProvider>
+                    <CartProvider initialCart={mockCart}>
+                        <Cart/>
+                    </CartProvider>
+                </MenuProvider>
             </BrowserRouter>
         )
 
