@@ -17,10 +17,13 @@ import { TfiBag } from "react-icons/tfi";
 import React from "react";
 import { OrderSummaryForm } from "../components/OrderSummaryForm";
 import { useNavigate } from "react-router-dom";
+import { useMenu } from "../contexts/useMenu";
+import { MenuOverlay } from "../components/MenuOverlay";
 
 export function Cart () {
     // USE CUSTOM HOOK
     const { cart, totalQuantity, increaseQuantity, decreaseQuantity, totalCost, removeFromCart } = useCart()
+    const { menuOpen } = useMenu()
 
     // Used to navigate back to the products page
     const navigate = useNavigate();
@@ -35,7 +38,11 @@ export function Cart () {
     }
 
     return (
-        <>
+        <div className="relative">
+
+            {/* Toggle menu over page if menuOpen is true */}
+            {menuOpen && <MenuOverlay/> }
+            
             {totalQuantity === 0 ? (
                 <main className="h-[calc(100vh-8rem)] flex justify-center items-center">
                     <div className="flex flex-col items-center gap-6 p-4">
@@ -120,6 +127,6 @@ export function Cart () {
                 </section>
             </main>
             )}
-        </>
+        </div>
     )
 }

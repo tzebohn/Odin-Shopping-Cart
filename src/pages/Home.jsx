@@ -1,6 +1,8 @@
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useMenu } from "../contexts/useMenu";
+import { MenuOverlay } from "../components/MenuOverlay";
 
 // Array of images to show on slideshow
 const slides = [
@@ -65,35 +67,45 @@ const settings = {
 }
 
 export function Home () {
+
+    const { menuOpen } = useMenu()
+
     return (
-        <main className="w-full">
-            <div>
-                <section className="w-full h-[70vh] sm:h-[80vh]">
-                    <Slider 
-                        {...settings} 
-                    >
-                        {slides.map(slide => (
-                            <div className="relative">
-                                {/* Background image */}
-                                <img
-                                    src={slide.image}
-                                    alt={slide.text}
-                                    className="w-full h-[70vh] sm:h-[80vh] object-cover brightness-75" 
-                                />
+        <div className="relative">
+            {/* Toggle menu over page if menuOpen is true */}
+            {menuOpen && ( 
+                <MenuOverlay /> 
+            )} 
 
-                                {/* Text overlays */}
-                                <div className={`absolute inset-0 text-white z-10 ${slide.position}`}>
-                                    <h2 className={`text-4xl md:text-6xl font-semibold ${slide.h2Position}`}>{slide.text}</h2>
+            <main className="w-full">
+                <div>
+                    <section className="w-full h-[70vh] sm:h-[80vh]">
+                        <Slider 
+                            {...settings} 
+                        >
+                            {slides.map(slide => (
+                                <div className="relative">
+                                    {/* Background image */}
+                                    <img
+                                        src={slide.image}
+                                        alt={slide.text}
+                                        className="w-full h-[70vh] sm:h-[80vh] object-cover brightness-75" 
+                                    />
 
-                                    <p className={`text-xl sm:text-2xl lg:text-3xl ${slide.pPosition}`}>{slide.subtext}</p>
+                                    {/* Text overlays */}
+                                    <div className={`absolute inset-0 text-white z-10 ${slide.position}`}>
+                                        <h2 className={`text-4xl md:text-6xl font-semibold ${slide.h2Position}`}>{slide.text}</h2>
+
+                                        <p className={`text-xl sm:text-2xl lg:text-3xl ${slide.pPosition}`}>{slide.subtext}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </Slider>
-                </section>
-            </div>
+                            ))}
+                        </Slider>
+                    </section>
+                </div>
 
-            {/* TODO: Add other Home page content here */}
-        </main>
+                {/* TODO: Add other Home page content here */}
+            </main>
+        </div>
     )
 }
