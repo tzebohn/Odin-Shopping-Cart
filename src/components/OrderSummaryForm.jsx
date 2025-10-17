@@ -26,7 +26,8 @@ export function OrderSummaryForm ({ totalPrice }) {
     // TODO: Submit form and navigate to checkout page
     function handleSubmit (e) {
         e.preventDefault()
-        console.log("submitting checkout")
+        alert("Checkout successful! 🎉")
+        // Clear cart logic
     }
 
     return (
