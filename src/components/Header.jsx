@@ -25,7 +25,7 @@ export function Header () {
     }
 
     return (
-        <div className="relative bg-[#1f0d33] text-[#e8e8e8] flex items-center justify-between px-8 py-8 h-32">
+        <div className="fixed top-0 left-0 right-0 bg-[#1f0d33] text-[#e8e8e8] flex items-center justify-between px-8 py-8 h-32">
             {/* Left: Logo */}
             <div className="flex items-center">
                 <FaShopify className="text-6xl"/>

@@ -71,7 +71,7 @@ export function Home () {
     const { menuOpen } = useMenu()
 
     return (
-        <div className="relative">
+        <div className="relative pt-32">
             {/* Toggle menu over page if menuOpen is true */}
             {menuOpen && ( 
                 <MenuOverlay /> 

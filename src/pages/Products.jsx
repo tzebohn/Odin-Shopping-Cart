@@ -11,7 +11,7 @@ export function Products () {
 
     //console.log(products)
     return (
-        <main className="relative p-8">
+        <main className="px-8 pt-40 pb-8">
             
             {/* Toggle menu over page if menuOpen is true */}
             {menuOpen && <MenuOverlay />}

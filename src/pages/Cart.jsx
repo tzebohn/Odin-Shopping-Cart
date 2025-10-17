@@ -38,7 +38,7 @@ export function Cart () {
     }
 
     return (
-        <div className="relative">
+        <div className="pt-32">
 
             {/* Toggle menu over page if menuOpen is true */}
             {menuOpen && <MenuOverlay/> }
