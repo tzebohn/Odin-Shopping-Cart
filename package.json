@@ -1,5 +1,6 @@
 {
   "name": "odin-shopping-cart",
+  "homepage": "https://tzebohn.github.io/Odin-Shopping-Cart",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +9,14 @@
     "build": "vite build",
     "test": "vitest",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
     "framer-motion": "^12.23.24",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-icons": "^5.5.0",

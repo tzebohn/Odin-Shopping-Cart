@@ -8,6 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: "/Odin-Shopping-Cart",
   test: {
     globals: true,
     environment: 'jsdom',
