@@ -19,7 +19,7 @@ export function MenuProvider ({ children }) {
     }
 
     return (
-        <MenuContext.Provider value={{ menuOpen, toggleMenu, closeMenu }}>
+        <MenuContext.Provider value={{ menuOpen, toggleMenu, closeMenu, setMenuOpen }}>
             {children}
         </MenuContext.Provider>
     )
