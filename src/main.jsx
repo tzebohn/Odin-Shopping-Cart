@@ -6,13 +6,16 @@ import { RouterProvider } from 'react-router-dom'
 import router from './router.jsx'
 import { CartProvider } from './contexts/CartProvider.jsx'
 import { MenuProvider } from './contexts/MenuProvider.jsx'
+import { ProductProvider } from './contexts/ProductProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <MenuProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
+      <ProductProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </ProductProvider>
     </MenuProvider>
   </StrictMode>,
 )
